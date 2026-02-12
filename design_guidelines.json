@@ -1,0 +1,119 @@
+{
+  "project_name": "JobBoard_E1",
+  "design_philosophy": {
+    "name": "Swiss Organic",
+    "core_principles": [
+      "Clarity through Contrast: Black ink on warm paper.",
+      "Asymmetry: Align left, leave right open for breath.",
+      "Objectivity: The job data is the hero. No decorations.",
+      "Touch: Buttons and cards should feel 'physical' (borders + shadows)."
+    ]
+  },
+  "typography": {
+    "font_family_heading": "Space Grotesk, sans-serif",
+    "font_family_body": "Manrope, sans-serif",
+    "scale": {
+      "h1": "text-6xl font-bold tracking-tight leading-none",
+      "h2": "text-4xl font-semibold tracking-tight",
+      "h3": "text-2xl font-medium",
+      "body": "text-base leading-relaxed text-muted-foreground",
+      "label": "text-xs font-mono uppercase tracking-widest text-muted-foreground"
+    },
+    "instructions": "Import 'Space Grotesk' and 'Manrope' from Google Fonts. Use Space Grotesk for all Headings and prominent numbers/stats."
+  },
+  "colors": {
+    "palette": {
+      "background": "#FDFCF8",
+      "foreground": "#18181B",
+      "card": "#FFFFFF",
+      "card_foreground": "#18181B",
+      "primary": "#18181B",
+      "primary_foreground": "#FFFFFF",
+      "secondary": "#F4F4F5",
+      "secondary_foreground": "#18181B",
+      "muted": "#F4F4F5",
+      "muted_foreground": "#71717A",
+      "accent": "#002FA7",
+      "accent_foreground": "#FFFFFF",
+      "border": "#E4E4E7",
+      "input": "#E4E4E7",
+      "ring": "#18181B"
+    },
+    "usage_rules": [
+      "Background must be the warm off-white (#FDFCF8), NOT pure white.",
+      "Card backgrounds are Pure White (#FFFFFF) to pop against the warm background.",
+      "Primary Action (Apply): Solid Black (#18181B).",
+      "Accent (Tags/Highlights): International Klein Blue (#002FA7) - Use sparingly for 'New' badges or active states."
+    ]
+  },
+  "layout": {
+    "grid_system": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8",
+    "container": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    "spacing": {
+      "section_gap": "py-24",
+      "card_padding": "p-8",
+      "element_gap": "gap-4"
+    },
+    "strategies": [
+      "Mobile First: 1 column on mobile, 2 on tablet, 3 on desktop.",
+      "The 'Tetris' logic: The first card (Featured Job) can span 2 columns if using a bento layout, but for simplicity, keep uniform 3-col grid.",
+      "Search Hero: The search bar is not just a tool, it's the Hero section. Make it huge."
+    ]
+  },
+  "components": {
+    "job_card": {
+      "style": "bg-card border border-border/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 rounded-xl",
+      "structure": [
+        "Top: Company Logo (48px square, rounded-lg) + Date Posted (Right)",
+        "Middle: Job Title (H3) + Company Name (Body)",
+        "Bottom: Tags (Remote, Type, Salary) + Apply Button (Hidden until hover? No, visible but subtle)."
+      ]
+    },
+    "search_hero": {
+      "style": "py-24 flex flex-col items-start gap-6",
+      "input_style": "text-4xl md:text-6xl font-heading bg-transparent border-b-2 border-border focus:border-primary outline-none placeholder:text-muted-foreground/40 w-full py-4 transition-colors"
+    },
+    "modal": {
+      "style": "bg-background/95 backdrop-blur-xl border border-border shadow-2xl p-0 overflow-hidden sm:rounded-2xl max-w-3xl w-full",
+      "overlay": "bg-black/20 backdrop-blur-sm"
+    },
+    "filters": {
+      "style": "flex flex-wrap gap-2 mb-12",
+      "item": "rounded-full px-6 py-2 border border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all cursor-pointer text-sm font-medium"
+    }
+  },
+  "motion": {
+    "libraries": ["framer-motion"],
+    "interactions": [
+      "Hover: Lift up (translate-y) + Shadow increase.",
+      "Entrance: Staggered fade-in for list items (0.1s delay per item).",
+      "Modal: Spring animation (scale 0.95 -> 1.0, opacity 0 -> 1)."
+    ]
+  },
+  "assets": {
+    "image_urls": {
+      "workspace_hero": "https://images.unsplash.com/photo-1759143545924-0ea00615a054?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "company_logos": [
+        "https://images.unsplash.com/photo-1770210217380-d78a69acdc77?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "https://images.unsplash.com/photo-1746047420047-03fc7a9b9226?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "https://images.unsplash.com/photo-1770012977129-19f856a1f935?crop=entropy&cs=srgb&fm=jpg&q=85",
+        "https://images.unsplash.com/photo-1761044591996-7a05341a3e12?crop=entropy&cs=srgb&fm=jpg&q=85"
+      ]
+    },
+    "icons": "lucide-react"
+  },
+  "instructions_to_main_agent": [
+    "1. Setup: Install 'lucide-react' and 'framer-motion'. Add Google Fonts to index.css.",
+    "2. Data: Create a 'mockJobs' array with at least 8 items. Use the provided logo URLs randomly.",
+    "3. Structure: Single page 'JobBoard'. State for search, filter, and 'selectedJob' (for modal).",
+    "4. Styling: Overwrite tailwind.config.js colors with the 'Swiss Organic' palette provided.",
+    "5. Precision: Ensure the grid aligns perfectly. Use 'container mx-auto'.",
+    "6. Detail: Add a 'No results found' state that looks designed, not just text."
+  ],
+  "universal_guidelines": [
+    "Do NOT use gradients for backgrounds. Keep it matte.",
+    "Do NOT center the text in the cards. Left align always.",
+    "Use proper semantic HTML (article for cards, main for content).",
+    "Ensure 'data-testid' is on all interactive elements."
+  ]
+}
